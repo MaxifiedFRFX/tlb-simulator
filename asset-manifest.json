@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/tlb-simulator/static/css/main.9ea95f7d.css",
-    "main.js": "/tlb-simulator/static/js/main.83cae26c.js",
+    "main.js": "/tlb-simulator/static/js/main.74a42efe.js",
     "static/js/787.7ebbd26a.chunk.js": "/tlb-simulator/static/js/787.7ebbd26a.chunk.js",
     "index.html": "/tlb-simulator/index.html",
     "main.9ea95f7d.css.map": "/tlb-simulator/static/css/main.9ea95f7d.css.map",
-    "main.83cae26c.js.map": "/tlb-simulator/static/js/main.83cae26c.js.map",
+    "main.74a42efe.js.map": "/tlb-simulator/static/js/main.74a42efe.js.map",
     "787.7ebbd26a.chunk.js.map": "/tlb-simulator/static/js/787.7ebbd26a.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.9ea95f7d.css",
-    "static/js/main.83cae26c.js"
+    "static/js/main.74a42efe.js"
   ]
 }
