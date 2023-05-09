@@ -84,7 +84,9 @@ function App() {
             for (let i = 0; i < newPas.length; i++) {
                 pfns.push(i);
             }
-            for (let i = 0; i < pfns.length; i++) {
+            for (let i = 0; i < vasSize; i++) {
+                console.log(i);
+                console.log(vpns);
                 newPas[pfns.splice(Math.floor(Math.random()*pfns.length), 1)[0]].implicitVpn = vpns.splice(Math.floor(Math.random()*vpns.length), 1)[0];
             }
             setPas(newPas);

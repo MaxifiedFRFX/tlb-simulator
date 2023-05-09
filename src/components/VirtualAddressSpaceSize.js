@@ -40,12 +40,7 @@ function VirtualAddressSpaceSize(params) {
     }));
 
     const handleInput = () => {
-        console.log("handleInput, ")
-        console.log(+document.getElementById('VASSizeInput').value <= pasSize) 
-        console.log(+document.getElementById('VASSizeInput').value > 0)
-        console.log(+document.getElementById('VASSizeInput') < 2048);
         if (+document.getElementById('VASSizeInput').value <= pasSize && +document.getElementById('VASSizeInput').value > 0 && +document.getElementById('VASSizeInput').value < 2048) {
-            console.log("if statement");
             setVasSize(+document.getElementById('VASSizeInput').value);
         }
     };
