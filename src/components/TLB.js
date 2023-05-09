@@ -9,7 +9,7 @@ import Paper from '@mui/material/Paper';
 import { Box, Typography } from '@mui/material';
 
 export default function BasicTable(params) {
-    const { tlb } = params;
+    const { tlb, hits } = params;
 
     return (
         <Box sx={{ flexGrow: 1 }}>
@@ -37,6 +37,7 @@ export default function BasicTable(params) {
                 </Table>
             </TableContainer>
             <Typography id='MissOrHit' sx={{ fontSize: "4rem" }}></Typography>
+            <Typography sx={{ fontSize: "4rem" }} >Hits: { hits } </Typography>
         </Box>
     );
 }

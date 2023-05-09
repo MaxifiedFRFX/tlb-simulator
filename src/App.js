@@ -32,6 +32,8 @@ function App() {
         { page: 15 },
     ]);
     const [tlb, setTlb] = useState([]);
+    const [hits, setHits] = useState(0);
+    const [hit, setHit] = useState(false);
     const [vpn, setVpn] = useState(null);
     const [pas, setPas] = useState([
         { pfn: 0, implicitVpn: null, value: "" },
@@ -85,12 +87,12 @@ function App() {
                 pfns.push(i);
             }
             for (let i = 0; i < vasSize; i++) {
-                console.log(i);
-                console.log(vpns);
-                newPas[pfns.splice(Math.floor(Math.random()*pfns.length), 1)[0]].implicitVpn = vpns.splice(Math.floor(Math.random()*vpns.length), 1)[0];
+                newPas[pfns.splice(Math.floor(Math.random() * pfns.length), 1)[0]].implicitVpn = vpns.splice(Math.floor(Math.random() * vpns.length), 1)[0];
             }
             setPas(newPas);
         }
+        setTlb([]);
+        setHits(0)
     }
 
     useEffect(changePas, [pasSize]);
@@ -126,11 +128,12 @@ function App() {
                 newTlb.push({ explicitVpn: vpn, pfn: pas.find(pa => pa.implicitVpn === vpn).pfn })
                 setTlb(newTlb);
                 document.getElementById('MissOrHit').textContent = "HIT!";
+                setHits(prevHits => ++prevHits);
             }
         }
     }
 
-    useEffect(addTlbEntry, [vpn]);
+    useEffect(addTlbEntry, [vpn, hit]);
 
     const theme = createTheme({
         pallete: {
@@ -160,12 +163,12 @@ function App() {
                 <body>
                     <div className="components">
                         <div id="settings">
-                            <VirtualAddress setVpn={setVpn} virtualAddressSpace={virtualAddressSpace} />
-                            <VirtualAddressSpaceSize vasSize={vasSize} setVasSize={setVasSize} pasSize={ pasSize } />
-                            <PhysicalAddressSpaceSize pasSize={pasSize} setPasSize={setPasSize} vasSize={ vasSize } />
+                            <VirtualAddress setVpn={setVpn} virtualAddressSpace={virtualAddressSpace} setHit={setHit} />
+                            <VirtualAddressSpaceSize vasSize={vasSize} setVasSize={setVasSize} pasSize={pasSize} />
+                            <PhysicalAddressSpaceSize pasSize={pasSize} setPasSize={setPasSize} vasSize={vasSize} />
                         </div>
-                        <VirtualAddressSpace id="vas" virtualAddressSpace={virtualAddressSpace} vpn={vpn} setVpn={setVpn} />
-                        <TLB tlb={tlb} />
+                        <VirtualAddressSpace id="vas" virtualAddressSpace={virtualAddressSpace} vpn={vpn} setVpn={setVpn} setHit={setHit} />
+                        <TLB tlb={tlb} hits={hits} />
                         <PhysicalAddressSpace pas={pas} vpn={vpn} />
                     </div>
                 </body>

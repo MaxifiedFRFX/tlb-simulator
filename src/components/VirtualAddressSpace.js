@@ -4,7 +4,7 @@ import MuiToggleButton from "@mui/material/ToggleButton";
 /* This contains the Virtual Address Space on a grid.
 */
 function VirtualAddressSpace(params) {
-    const { virtualAddressSpace, vpn, setVpn } = params;
+    const { virtualAddressSpace, vpn, setVpn, setHit } = params;
 
     const ToggleButton2 = styled(MuiToggleButton)(({ theme }) => ({
         color: "white",
@@ -21,9 +21,12 @@ function VirtualAddressSpace(params) {
     }));
 
     const handlePage = (event, newVpn) => {
-        setVpn(+newVpn);
-        document.getElementById("virtualAddressInput").value = newVpn;
-        console.log(vpn);
+        if (newVpn !== null) {
+            setVpn(+newVpn);
+            document.getElementById("virtualAddressInput").value = newVpn;
+        } else {
+            setHit(prevHit => !prevHit);
+        }
     };
 
     return (

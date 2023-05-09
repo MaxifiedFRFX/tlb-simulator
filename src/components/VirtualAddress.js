@@ -1,7 +1,7 @@
 import { Box, InputBase, Typography, styled, alpha, Button } from '@mui/material';
 
 function VirtualAddress(params) {
-    const { setVpn, virtualAddressSpace } = params;
+    const { setVpn, virtualAddressSpace, setHit } = params;
 
     const BootstrapInput = styled(InputBase)(({ theme }) => ({
         '& .MuiInputBase-input': {
@@ -40,6 +40,7 @@ function VirtualAddress(params) {
     const handleInput = () => {
         if (virtualAddressSpace.find(page => page.page === +document.getElementById('virtualAddressInput').value)) {
             setVpn(+document.getElementById('virtualAddressInput').value);
+            setHit(prevHit => !prevHit);
         }
     };
 
@@ -49,7 +50,7 @@ function VirtualAddress(params) {
             <BootstrapInput
                 id="virtualAddressInput"
             />
-            <Button onClick={ handleInput }>Translate</Button>
+            <Button onClick={handleInput}>Translate</Button>
         </Box>
     );
 }

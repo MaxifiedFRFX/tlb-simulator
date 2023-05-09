@@ -11,11 +11,12 @@ function PhysicalAddressSpace(params) {
 
     useEffect(() => {
         if (vpn !== null) {
-            document.getElementById("row" + vpn).classList.add('pasSelected');
-            document.getElementById('row' + vpn).scrollIntoView();
+            let page = pas.find(pa => pa.implicitVpn === vpn);
+            document.getElementById("row" + page.pfn).classList.add('pasSelected');
+            document.getElementById('row' + page.pfn).scrollIntoView();
 
             return function cleanup() {
-                document.getElementById("row" + vpn).classList.remove('pasSelected');
+                document.getElementById("row" + page.pfn).classList.remove('pasSelected');
             }
         }
     }, [vpn])
@@ -37,7 +38,7 @@ function PhysicalAddressSpace(params) {
                                 <TableRow
                                     key={page.pfn}
                                     sx={{ backgroundcolor: 'blue' }}
-                                    id={"row" + page.implicitVpn}
+                                    id={"row" + page.pfn}
                                 >
                                     <TableCell>{page.pfn}</TableCell>
                                     <TableCell component="th" scope="row">
